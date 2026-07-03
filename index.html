@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Beer & Burger Joint — Prince Wharf, Auckland CBD</title>
+<meta name="description" content="Auckland CBD's premier burger and beer joint at Prince Wharf, Quay Street. Dine in, take away, or order delivery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --char:#1B1815;
+    --char-2:#242019;
+    --ember:#E8622C;
+    --amber:#D9A441;
+    --cream:#F2EAD9;
+    --brown:#4A2E1C;
+    --line: rgba(242,234,217,0.14);
+    --radius: 2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--char);
+    color:var(--cream);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Anton', sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    line-height:0.95;
+    margin:0;
+  }
+  .eyebrow{
+    font-family:'DM Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--amber);
+    margin-bottom:0.6rem;
+    display:block;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:640px; margin:0 auto; padding:0 20px;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(27,24,21,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 20px; max-width:640px; margin:0 auto;
+  }
+  .nav-brand{
+    font-family:'Anton', sans-serif;
+    font-size:1.05rem;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+  }
+  .nav-brand span{color:var(--ember);}
+  .nav-call{
+    display:flex; align-items:center; gap:6px;
+    font-family:'DM Mono', monospace;
+    font-size:0.85rem;
+    color:var(--cream);
+    text-decoration:none;
+    border:1px solid var(--line);
+    padding:8px 12px;
+    border-radius:var(--radius);
+  }
+  .nav-call:active{background:var(--ember); border-color:var(--ember);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:44px 20px 32px;
+    background:
+      linear-gradient(180deg, rgba(27,24,21,0.55) 0%, rgba(27,24,21,0.88) 78%, var(--char) 100%),
+      url('https://i0.wp.com/viduct-burger-vibes.lovable.app/assets/hero-burger-CQ1I8ClV.jpg?ssl=1') center/cover no-repeat;
+    min-height:78vh;
+    display:flex; flex-direction:column; justify-content:flex-end;
+  }
+  .hero-inner{max-width:640px; margin:0 auto; width:100%;}
+  .hero h1{font-size:clamp(2.4rem, 10vw, 3.4rem); color:var(--cream);}
+  .hero h1 em{font-style:normal; color:var(--ember);}
+  .hero-sub{
+    margin-top:14px; font-size:1rem; color:var(--cream); opacity:0.85; max-width:30ch;
+  }
+  .hero-meta{
+    margin-top:22px; padding-top:18px; border-top:1px solid var(--line);
+    display:flex; flex-direction:column; gap:8px;
+    font-family:'DM Mono', monospace; font-size:0.88rem;
+  }
+  .hero-meta a{text-decoration:none; opacity:0.92;}
+  .status-dot{
+    display:inline-flex; align-items:center; gap:6px;
+    color:var(--amber);
+  }
+  .status-dot::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--amber); box-shadow:0 0 8px var(--amber);}
+  .hero-ctas{margin-top:22px; display:flex; flex-wrap:wrap; gap:10px;}
+  .btn{
+    font-family:'DM Mono', monospace;
+    font-size:0.82rem; letter-spacing:0.03em; text-transform:uppercase;
+    text-decoration:none; padding:13px 18px; border-radius:var(--radius);
+    border:1px solid transparent; display:inline-flex; align-items:center; gap:8px;
+    transition:transform .15s ease;
+  }
+  .btn:active{transform:scale(0.97);}
+  .btn-primary{background:var(--ember); color:var(--char);}
+  .btn-outline{border-color:var(--line); color:var(--cream);}
+  .btn-outline:active{border-color:var(--ember);}
+
+  /* ---------- SECTION ---------- */
+  section{padding:56px 0;}
+  .section-head{margin-bottom:28px;}
+  .section-head h2{font-size:clamp(1.8rem, 7vw, 2.4rem);}
+  .section-head p{margin-top:10px; opacity:0.75; max-width:42ch; font-size:0.95rem;}
+
+  /* ---------- MENU: order tickets ---------- */
+  .ticket{
+    position:relative;
+    background:var(--char-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 18px 18px 20px;
+    margin-bottom:14px;
+    display:flex; justify-content:space-between; gap:16px;
+  }
+  .ticket::before{
+    content:'';
+    position:absolute; left:0; top:0; bottom:0; width:4px;
+    background:repeating-linear-gradient(180deg, var(--amber) 0 6px, transparent 6px 12px);
+  }
+  .ticket-tag{
+    position:absolute; top:-9px; left:20px;
+    background:var(--ember); color:var(--char);
+    font-family:'DM Mono', monospace; font-size:0.65rem; letter-spacing:0.08em;
+    text-transform:uppercase; padding:3px 8px; border-radius:2px;
+  }
+  .ticket-name{font-family:'Anton', sans-serif; font-size:1.15rem; text-transform:uppercase;}
+  .ticket-desc{margin-top:6px; font-size:0.85rem; opacity:0.7; line-height:1.5;}
+  .ticket-price{
+    font-family:'DM Mono', monospace; font-size:1.1rem; color:var(--amber);
+    white-space:nowrap; align-self:flex-start;
+  }
+  .menu-cta{
+    display:flex; flex-direction:column; gap:10px; align-items:flex-start;
+    margin-top:24px; padding-top:22px; border-top:1px solid var(--line);
+  }
+  .menu-cta p{font-size:0.9rem; opacity:0.75; margin:0;}
+
+  /* ---------- BEER ---------- */
+  .beer{
+    background:var(--brown);
+    border-radius:var(--radius);
+    padding:32px 24px;
+    text-align:center;
+  }
+  .beer .price{
+    font-family:'Anton', sans-serif; font-size:4.5rem; color:var(--amber); line-height:0.9;
+  }
+  .beer .price sup{font-size:1.6rem; top:-1.8rem;}
+  .beer p{margin-top:8px; font-family:'DM Mono', monospace; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; opacity:0.85;}
+  .beer .fine{margin-top:18px; font-family:'Work Sans'; font-size:0.85rem; opacity:0.75; letter-spacing:normal; text-transform:none;}
+
+  /* ---------- ABOUT ---------- */
+  .about-copy p{font-size:0.98rem; line-height:1.65; opacity:0.85; margin:0 0 14px;}
+  .pillars{display:grid; grid-template-columns:1fr; gap:14px; margin-top:24px;}
+  .pillar{border:1px solid var(--line); border-radius:var(--radius); padding:18px;}
+  .pillar h3{font-family:'Work Sans'; font-weight:700; font-size:0.95rem; text-transform:none; margin-bottom:6px; color:var(--ember);}
+  .pillar p{font-size:0.85rem; opacity:0.7; margin:0; line-height:1.5;}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{
+    background:var(--char-2);
+    border-top:1px solid var(--line);
+    padding:48px 0 28px;
+  }
+  .contact-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px;}
+  .contact-list a{
+    display:flex; align-items:center; gap:12px;
+    text-decoration:none; font-size:0.95rem;
+    padding:14px; border:1px solid var(--line); border-radius:var(--radius);
+  }
+  .contact-list a:active{border-color:var(--ember);}
+  .ico{
+    width:20px; text-align:center; color:var(--ember); font-family:'DM Mono', monospace; font-weight:700; flex-shrink:0;
+  }
+  .social-row{display:flex; gap:10px; margin-top:20px;}
+  .social-row a{
+    flex:1; text-align:center; padding:12px; border:1px solid var(--line); border-radius:var(--radius);
+    text-decoration:none; font-family:'DM Mono', monospace; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;
+  }
+  .social-row a:active{background:var(--ember); border-color:var(--ember); color:var(--char);}
+  .quicklinks{display:flex; flex-wrap:wrap; gap:10px 18px; margin-top:26px; padding-top:22px; border-top:1px solid var(--line);}
+  .quicklinks a{font-family:'DM Mono', monospace; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; text-decoration:none; opacity:0.75;}
+  .footer-ctas{display:flex; flex-direction:column; gap:10px; margin-top:26px;}
+  .footer-bottom{margin-top:32px; padding-top:20px; border-top:1px solid var(--line); font-family:'DM Mono', monospace; font-size:0.72rem; opacity:0.5; display:flex; flex-direction:column; gap:6px;}
+  .footer-bottom a{opacity:1; color:var(--amber); text-decoration:none;}
+
+  @media(min-width:560px){
+    .pillars{grid-template-columns:1fr 1fr 1fr;}
+    .hero-ctas{gap:12px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">BEER<span>&</span>BURGER</div>
+    <a class="nav-call" href="tel:0093023020" aria-label="Call Beer and Burger Joint">☎ 09-302 3020</a>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <span class="eyebrow">Prince Wharf · Auckland CBD</span>
+    <h1>Beer <em>&</em> Burger<br>Joint</h1>
+    <p class="hero-sub">Chargrilled burgers, 20+ beers on offer, right on the water at Prince Wharf.</p>
+    <div class="hero-meta">
+      <span class="status-dot">Open now</span>
+      <a href="https://maps.google.com/?q=139+Quay+Street,+Prince+Wharf,+Auckland+CBD" target="_blank" rel="noopener">139 Quay Street, Prince Wharf, Auckland CBD ↗</a>
+      <a href="tel:0093023020">09-302 3020</a>
+    </div>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="menu.pdf" download target="_blank" rel="noopener">Download Menu (PDF)</a>
+      <a class="btn btn-outline" href="https://www.ubereats.com/nz/store/beer-and-burger-joint-quay-street/DqUJVlSRWASbBmLPXcomhg?diningMode=DELIVERY&ps=1&surfaceName=" target="_blank" rel="noopener">Order Uber Eats</a>
+      <a class="btn btn-outline" href="https://www.doordash.com/store/beer-and-burger-joint-auckland-39963893/92730963/" target="_blank" rel="noopener">Order DoorDash</a>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Gourmet Angus · Chicken · Vegetarian · Salads</span>
+      <h2>Signature Burgers</h2>
+      <p>Chargrilled Angus beef, free-range chicken, venison, ostrich and gluten-free vegetarian patties — plus salads, kids' menu, sides and extras in the full menu below.</p>
+    </div>
+
+    <div class="ticket">
+      <span class="ticket-tag">Popular</span>
+      <div>
+        <div class="ticket-name">Kiwi Supreme</div>
+        <div class="ticket-desc">180g chargrilled Angus beef, streaky smokey bacon, melted cheese, free range egg, beetroot, pickle, tomato, mixed green, red onion, homemade tomato jam & mayo.</div>
+      </div>
+      <div class="ticket-price">$24</div>
+    </div>
+
+    <div class="ticket">
+      <span class="ticket-tag">Popular</span>
+      <div>
+        <div class="ticket-name">Ostrich Burger</div>
+        <div class="ticket-desc">Lean and tender NZ ostrich patty, grilled and layered with mixed greens, fresh tomato, creamy aioli, and caramelised onions.</div>
+      </div>
+      <div class="ticket-price">$25</div>
+    </div>
+
+    <div class="ticket">
+      <div>
+        <div class="ticket-name">Bacon Angus</div>
+        <div class="ticket-desc">180g chargrilled Angus beef pattie, smoked manuka bacon, smashed avocado, tomato, mixed mesclun, red onion, homemade relish & mayo.</div>
+      </div>
+      <div class="ticket-price">$22</div>
+    </div>
+
+    <div class="ticket">
+      <div>
+        <div class="ticket-name">Falafel Burger</div>
+        <div class="ticket-desc">Chickpeas & broad beans, a punch of fresh herbs and spices, yoghurt sauce, tomato, mixed mesclun, red onion, tomato jam & mayo. Gluten free, dairy free.</div>
+      </div>
+      <div class="ticket-price">$19</div>
+    </div>
+
+    <div class="menu-cta">
+      <p>Full menu with all combos and extras is in the PDF.</p>
+      <a class="btn btn-primary" href="menu.pdf" download target="_blank" rel="noopener">Download Full Menu (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<section id="beer">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">On tap & in the fridge</span>
+      <h2>$7 Beer Selection</h2>
+    </div>
+    <div class="beer">
+      <div class="price"><sup>$</sup>7</div>
+      <p>Over 20 beers to choose from</p>
+      <p class="fine">Special takeaway rates available for in-store dine-in and takeaway. Ask our staff about daily specials!</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Who we are</span>
+      <h2>About Us</h2>
+    </div>
+    <div class="about-copy">
+      <p>Welcome to Beer and Burger Joint, Auckland CBD's premier destination for mouthwatering burgers and carefully selected craft beers. Located at the iconic Prince Wharf on Quay Street, we bring you the perfect combination of quality food and great atmosphere.</p>
+      <p>Whether you're looking for a quick takeaway or a relaxed dine-in experience, we've got you covered. Our commitment to using premium ingredients and supporting local breweries ensures every visit is memorable. Join us at Auckland's Viaduct and taste the difference!</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <h3>Made with Love</h3>
+        <p>Every burger is crafted with premium ingredients and passion for great food.</p>
+      </div>
+      <div class="pillar">
+        <h3>Quality Guaranteed</h3>
+        <p>We source the finest local ingredients and stock over 20 beers.</p>
+      </div>
+      <div class="pillar">
+        <h3>Community Focused</h3>
+        <p>Proud to serve Auckland CBD's vibrant community at Prince Wharf.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <span class="eyebrow">Get in touch</span>
+    <h2 style="font-size:1.8rem;">Contact Us</h2>
+
+    <ul class="contact-list" style="margin-top:20px;">
+      <li><a href="https://maps.google.com/?q=139+Quay+Street,+Prince+Wharf,+Auckland+CBD" target="_blank" rel="noopener"><span class="ico">📍</span> 139 Quay Street, Prince Wharf, Auckland CBD</a></li>
+      <li><a href="tel:0093023020"><span class="ico">☎</span> 09-302 3020</a></li>
+      <li><a href="mailto:info@beerandburgerjoint.co.nz"><span class="ico">✉</span> info@beerandburgerjoint.co.nz</a></li>
+    </ul>
+
+    <div class="social-row">
+      <a href="https://www.facebook.com/profile.php?id=61580535131409" target="_blank" rel="noopener">Facebook ↗</a>
+      <a href="https://www.instagram.com/beerandburgerjoint/" target="_blank" rel="noopener">Instagram ↗</a>
+    </div>
+
+    <div class="footer-ctas">
+      <a class="btn btn-primary" href="https://www.ubereats.com/nz/store/beer-and-burger-joint-quay-street/DqUJVlSRWASbBmLPXcomhg?diningMode=DELIVERY&ps=1&surfaceName=" target="_blank" rel="noopener">Order on Uber Eats</a>
+      <a class="btn btn-outline" href="https://www.doordash.com/store/beer-and-burger-joint-auckland-39963893/92730963/" target="_blank" rel="noopener">Order on DoorDash</a>
+    </div>
+
+    <div class="quicklinks">
+      <a href="#menu">Menu</a>
+      <a href="#beer">Beer</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Beer and Burger Joint. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
