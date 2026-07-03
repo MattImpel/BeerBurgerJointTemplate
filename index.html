@@ -3,28 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Beer & Burger Joint — Prince Wharf, Auckland CBD</title>
-<meta name="description" content="Auckland CBD's premier burger and beer joint at Prince Wharf, Quay Street. Dine in, take away, or order delivery.">
+<title>Beer & Burger Joint — 1/139 Quay Street, Auckland CBD</title>
+<meta name="description" content="Auckland CBD's premier burger and beer joint at 1/139 Quay Street. Dine in, take away, or order delivery.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --char:#1B1815;
-    --char-2:#242019;
-    --ember:#E8622C;
-    --amber:#D9A441;
-    --cream:#F2EAD9;
-    --brown:#4A2E1C;
-    --line: rgba(242,234,217,0.14);
+    --black:#141414;
+    --black-2:#1E1E1E;
+    --orange:#F2701C;
+    --white:#F7F5F2;
+    --line: rgba(247,245,242,0.14);
     --radius: 2px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:var(--char);
-    color:var(--cream);
+    background:var(--black);
+    color:var(--white);
     font-family:'Work Sans', sans-serif;
     -webkit-font-smoothing:antialiased;
   }
@@ -41,7 +39,7 @@
     font-size:0.72rem;
     letter-spacing:0.18em;
     text-transform:uppercase;
-    color:var(--amber);
+    color:var(--orange);
     margin-bottom:0.6rem;
     display:block;
   }
@@ -57,43 +55,54 @@
     border-bottom:1px solid var(--line);
   }
   .nav-inner{
-    display:flex; align-items:center; justify-content:space-between;
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
     padding:12px 20px; max-width:640px; margin:0 auto;
   }
   .nav-brand{
     font-family:'Anton', sans-serif;
-    font-size:1.05rem;
+    font-size:clamp(0.8rem, 4.2vw, 1.05rem);
     text-transform:uppercase;
     letter-spacing:0.02em;
+    white-space:nowrap;
+    flex-shrink:1;
+    min-width:0;
   }
-  .nav-brand span{color:var(--ember);}
+  .nav-brand span{color:var(--orange);}
   .nav-call{
     display:flex; align-items:center; gap:6px;
     font-family:'DM Mono', monospace;
     font-size:0.85rem;
-    color:var(--cream);
+    color:var(--white);
     text-decoration:none;
     border:1px solid var(--line);
     padding:8px 12px;
     border-radius:var(--radius);
+    flex-shrink:0;
+    white-space:nowrap;
   }
-  .nav-call:active{background:var(--ember); border-color:var(--ember);}
+  .nav-call .nav-call-text{display:inline;}
+  .nav-call:active{background:var(--orange); border-color:var(--orange);}
+  @media(max-width:400px){
+    .nav-brand{font-size:clamp(0.68rem, 5vw, 0.95rem);}
+    .nav-call{padding:8px 10px;}
+    .nav-call .nav-call-text{display:none;}
+  }
 
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
     padding:44px 20px 32px;
     background:
-      linear-gradient(180deg, rgba(27,24,21,0.55) 0%, rgba(27,24,21,0.88) 78%, var(--char) 100%),
+      linear-gradient(180deg, rgba(27,24,21,0.55) 0%, rgba(27,24,21,0.88) 78%, var(--black) 100%),
       url('https://i0.wp.com/viduct-burger-vibes.lovable.app/assets/hero-burger-CQ1I8ClV.jpg?ssl=1') center/cover no-repeat;
     min-height:78vh;
     display:flex; flex-direction:column; justify-content:flex-end;
   }
   .hero-inner{max-width:640px; margin:0 auto; width:100%;}
-  .hero h1{font-size:clamp(2.4rem, 10vw, 3.4rem); color:var(--cream);}
-  .hero h1 em{font-style:normal; color:var(--ember);}
+  .hero h1{font-size:clamp(2.4rem, 10vw, 3.4rem); color:var(--white);}
+  .hero h1 em{font-style:normal; color:var(--orange);}
   .hero-sub{
-    margin-top:14px; font-size:1rem; color:var(--cream); opacity:0.85; max-width:30ch;
+    margin-top:14px; font-size:1rem; color:var(--white); opacity:0.85; max-width:30ch;
   }
   .hero-meta{
     margin-top:22px; padding-top:18px; border-top:1px solid var(--line);
@@ -103,9 +112,11 @@
   .hero-meta a{text-decoration:none; opacity:0.92;}
   .status-dot{
     display:inline-flex; align-items:center; gap:6px;
-    color:var(--amber);
+    color:var(--orange);
   }
-  .status-dot::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--amber); box-shadow:0 0 8px var(--amber);}
+  .status-dot::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--orange); box-shadow:0 0 8px var(--orange);}
+  .status-dot.is-closed{color:#9a8f80;}
+  .status-dot.is-closed::before{background:#9a8f80; box-shadow:none;}
   .hero-ctas{margin-top:22px; display:flex; flex-wrap:wrap; gap:10px;}
   .btn{
     font-family:'DM Mono', monospace;
@@ -115,9 +126,9 @@
     transition:transform .15s ease;
   }
   .btn:active{transform:scale(0.97);}
-  .btn-primary{background:var(--ember); color:var(--char);}
-  .btn-outline{border-color:var(--line); color:var(--cream);}
-  .btn-outline:active{border-color:var(--ember);}
+  .btn-primary{background:var(--orange); color:var(--black);}
+  .btn-outline{border-color:var(--line); color:var(--white);}
+  .btn-outline:active{border-color:var(--orange);}
 
   /* ---------- SECTION ---------- */
   section{padding:56px 0;}
@@ -128,7 +139,7 @@
   /* ---------- MENU: order tickets ---------- */
   .ticket{
     position:relative;
-    background:var(--char-2);
+    background:var(--black-2);
     border:1px solid var(--line);
     border-radius:var(--radius);
     padding:18px 18px 18px 20px;
@@ -138,18 +149,18 @@
   .ticket::before{
     content:'';
     position:absolute; left:0; top:0; bottom:0; width:4px;
-    background:repeating-linear-gradient(180deg, var(--amber) 0 6px, transparent 6px 12px);
+    background:repeating-linear-gradient(180deg, var(--orange) 0 6px, transparent 6px 12px);
   }
   .ticket-tag{
     position:absolute; top:-9px; left:20px;
-    background:var(--ember); color:var(--char);
+    background:var(--orange); color:var(--black);
     font-family:'DM Mono', monospace; font-size:0.65rem; letter-spacing:0.08em;
     text-transform:uppercase; padding:3px 8px; border-radius:2px;
   }
   .ticket-name{font-family:'Anton', sans-serif; font-size:1.15rem; text-transform:uppercase;}
   .ticket-desc{margin-top:6px; font-size:0.85rem; opacity:0.7; line-height:1.5;}
   .ticket-price{
-    font-family:'DM Mono', monospace; font-size:1.1rem; color:var(--amber);
+    font-family:'DM Mono', monospace; font-size:1.1rem; color:var(--orange);
     white-space:nowrap; align-self:flex-start;
   }
   .menu-cta{
@@ -160,28 +171,43 @@
 
   /* ---------- BEER ---------- */
   .beer{
-    background:var(--brown);
+    background:var(--black-2);
     border-radius:var(--radius);
     padding:32px 24px;
     text-align:center;
   }
   .beer .price{
-    font-family:'Anton', sans-serif; font-size:4.5rem; color:var(--amber); line-height:0.9;
+    font-family:'Anton', sans-serif; font-size:4.5rem; color:var(--orange); line-height:0.9;
   }
   .beer .price sup{font-size:1.6rem; top:-1.8rem;}
   .beer p{margin-top:8px; font-family:'DM Mono', monospace; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; opacity:0.85;}
   .beer .fine{margin-top:18px; font-family:'Work Sans'; font-size:0.85rem; opacity:0.75; letter-spacing:normal; text-transform:none;}
+  .takeaway-note{
+    margin-top:16px; padding:16px 18px;
+    border:1px solid var(--line); border-radius:var(--radius);
+  }
+  .takeaway-note p{margin:0; font-size:0.88rem; opacity:0.8; line-height:1.5;}
+
+  /* ---------- VIDEO ---------- */
+  .video-frame{
+    position:relative; width:100%; padding-top:56.25%;
+    border-radius:var(--radius); overflow:hidden; border:1px solid var(--line);
+    background:var(--black-2);
+  }
+  .video-frame iframe{
+    position:absolute; top:0; left:0; width:100%; height:100%; border:0;
+  }
 
   /* ---------- ABOUT ---------- */
   .about-copy p{font-size:0.98rem; line-height:1.65; opacity:0.85; margin:0 0 14px;}
   .pillars{display:grid; grid-template-columns:1fr; gap:14px; margin-top:24px;}
   .pillar{border:1px solid var(--line); border-radius:var(--radius); padding:18px;}
-  .pillar h3{font-family:'Work Sans'; font-weight:700; font-size:0.95rem; text-transform:none; margin-bottom:6px; color:var(--ember);}
+  .pillar h3{font-family:'Work Sans'; font-weight:700; font-size:0.95rem; text-transform:none; margin-bottom:6px; color:var(--orange);}
   .pillar p{font-size:0.85rem; opacity:0.7; margin:0; line-height:1.5;}
 
   /* ---------- CONTACT / FOOTER ---------- */
   footer{
-    background:var(--char-2);
+    background:var(--black-2);
     border-top:1px solid var(--line);
     padding:48px 0 28px;
   }
@@ -191,21 +217,21 @@
     text-decoration:none; font-size:0.95rem;
     padding:14px; border:1px solid var(--line); border-radius:var(--radius);
   }
-  .contact-list a:active{border-color:var(--ember);}
+  .contact-list a:active{border-color:var(--orange);}
   .ico{
-    width:20px; text-align:center; color:var(--ember); font-family:'DM Mono', monospace; font-weight:700; flex-shrink:0;
+    width:20px; text-align:center; color:var(--orange); font-family:'DM Mono', monospace; font-weight:700; flex-shrink:0;
   }
   .social-row{display:flex; gap:10px; margin-top:20px;}
   .social-row a{
     flex:1; text-align:center; padding:12px; border:1px solid var(--line); border-radius:var(--radius);
     text-decoration:none; font-family:'DM Mono', monospace; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;
   }
-  .social-row a:active{background:var(--ember); border-color:var(--ember); color:var(--char);}
+  .social-row a:active{background:var(--orange); border-color:var(--orange); color:var(--black);}
   .quicklinks{display:flex; flex-wrap:wrap; gap:10px 18px; margin-top:26px; padding-top:22px; border-top:1px solid var(--line);}
   .quicklinks a{font-family:'DM Mono', monospace; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; text-decoration:none; opacity:0.75;}
   .footer-ctas{display:flex; flex-direction:column; gap:10px; margin-top:26px;}
   .footer-bottom{margin-top:32px; padding-top:20px; border-top:1px solid var(--line); font-family:'DM Mono', monospace; font-size:0.72rem; opacity:0.5; display:flex; flex-direction:column; gap:6px;}
-  .footer-bottom a{opacity:1; color:var(--amber); text-decoration:none;}
+  .footer-bottom a{opacity:1; color:var(--orange); text-decoration:none;}
 
   @media(min-width:560px){
     .pillars{grid-template-columns:1fr 1fr 1fr;}
@@ -222,18 +248,18 @@
 <header class="nav">
   <div class="nav-inner">
     <div class="nav-brand">BEER<span>&</span>BURGER JOINT</div>
-    <a class="nav-call" href="tel:0093023020" aria-label="Call Beer and Burger Joint">☎ 09-302 3020</a>
+    <a class="nav-call" href="tel:0093023020" aria-label="Call Beer and Burger Joint">☎<span class="nav-call-text"> 09-302 3020</span></a>
   </div>
 </header>
 
 <section class="hero" id="home">
   <div class="hero-inner">
-    <span class="eyebrow">Prince Wharf · Auckland CBD</span>
+    <span class="eyebrow">1/139 Quay Street · Auckland CBD</span>
     <h1>Beer <em>&</em> Burger<br>Joint</h1>
-    <p class="hero-sub">Chargrilled burgers, 20+ beers on offer, right on the water at Prince Wharf.</p>
+    <p class="hero-sub">Chargrilled burgers, 20+ beers on offer, right in the heart of Auckland CBD.</p>
     <div class="hero-meta">
-      <span class="status-dot">Open now</span>
-      <a href="https://maps.google.com/?q=139+Quay+Street,+Prince+Wharf,+Auckland+CBD" target="_blank" rel="noopener">139 Quay Street, Prince Wharf, Auckland CBD ↗</a>
+      <span class="status-dot" id="openStatus">Open now</span>
+      <a href="https://maps.google.com/?q=1/139+Quay+Street,+Auckland+CBD,+Auckland+1010" target="_blank" rel="noopener">1/139 Quay Street, Auckland CBD, Auckland 1010 ↗</a>
       <a href="tel:0093023020">09-302 3020</a>
     </div>
     <div class="hero-ctas">
@@ -302,7 +328,22 @@
     <div class="beer">
       <div class="price"><sup>$</sup>7</div>
       <p>Over 20 beers to choose from</p>
-      <p class="fine">Special takeaway rates available for in-store dine-in and takeaway. Ask our staff about daily specials!</p>
+    </div>
+    <div class="takeaway-note">
+      <span class="eyebrow" style="margin-bottom:2px;">Good to know</span>
+      <p>Special takeaway rates available. Ask our staff about daily specials!</p>
+    </div>
+  </div>
+</section>
+
+<section id="video">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Take a look inside</span>
+      <h2>The Vibe</h2>
+    </div>
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/36lQYdn4BgQ" title="Beer and Burger Joint" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
     </div>
   </div>
 </section>
@@ -314,7 +355,7 @@
       <h2>About Us</h2>
     </div>
     <div class="about-copy">
-      <p>Welcome to Beer and Burger Joint, Auckland CBD's premier destination for mouthwatering burgers and carefully selected craft beers. Located at the iconic Prince Wharf on Quay Street, we bring you the perfect combination of quality food and great atmosphere.</p>
+      <p>Welcome to Beer and Burger Joint, Auckland CBD's premier destination for mouthwatering burgers and carefully selected craft beers. Located at 1/139 Quay Street in the heart of Auckland CBD, we bring you the perfect combination of quality food and great atmosphere.</p>
       <p>Whether you're looking for a quick takeaway or a relaxed dine-in experience, we've got you covered. Our commitment to using premium ingredients and supporting local breweries ensures every visit is memorable. Join us at Auckland's Viaduct and taste the difference!</p>
     </div>
     <div class="pillars">
@@ -328,7 +369,7 @@
       </div>
       <div class="pillar">
         <h3>Community Focused</h3>
-        <p>Proud to serve Auckland CBD's vibrant community at Prince Wharf.</p>
+        <p>Proud to serve Auckland CBD's vibrant community.</p>
       </div>
     </div>
   </div>
@@ -340,7 +381,7 @@
     <h2 style="font-size:1.8rem;">Contact Us</h2>
 
     <ul class="contact-list" style="margin-top:20px;">
-      <li><a href="https://maps.google.com/?q=139+Quay+Street,+Prince+Wharf,+Auckland+CBD" target="_blank" rel="noopener"><span class="ico">📍</span> 139 Quay Street, Prince Wharf, Auckland CBD</a></li>
+      <li><a href="https://maps.google.com/?q=1/139+Quay+Street,+Auckland+CBD,+Auckland+1010" target="_blank" rel="noopener"><span class="ico">📍</span> 1/139 Quay Street, Auckland CBD, Auckland 1010</a></li>
       <li><a href="tel:0093023020"><span class="ico">☎</span> 09-302 3020</a></li>
       <li><a href="mailto:info@beerandburgerjoint.co.nz"><span class="ico">✉</span> info@beerandburgerjoint.co.nz</a></li>
     </ul>
@@ -358,6 +399,7 @@
     <div class="quicklinks">
       <a href="#menu">Menu</a>
       <a href="#beer">Beer</a>
+      <a href="#video">Video</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
@@ -369,4 +411,41 @@
 </footer>
 
 </body>
+<script>
+(function(){
+  // Hours in NZT, minutes from midnight. Index: 0=Sun ... 6=Sat
+  var hoursTable = [
+    {open:600, close:1290},  // Sun 10:00–21:30
+    {open:540, close:1260},  // Mon  9:00–21:00
+    {open:540, close:1260},  // Tue  9:00–21:00
+    {open:570, close:1320},  // Wed  9:30–22:00
+    {open:600, close:1320},  // Thu 10:00–22:00
+    {open:600, close:1380},  // Fri 10:00–23:00
+    {open:600, close:1380}   // Sat 10:00–23:00
+  ];
+  function aucklandNow(){
+    var parts = new Intl.DateTimeFormat('en-US', {
+      timeZone:'Pacific/Auckland', hour12:false, weekday:'short', hour:'2-digit', minute:'2-digit'
+    }).formatToParts(new Date());
+    var map = {};
+    parts.forEach(function(p){ map[p.type] = p.value; });
+    var dayIndex = {Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6}[map.weekday];
+    var hour = parseInt(map.hour, 10) % 24;
+    var minute = parseInt(map.minute, 10);
+    return {day: dayIndex, minutes: hour * 60 + minute};
+  }
+  function updateStatus(){
+    var el = document.getElementById('openStatus');
+    if(!el) return;
+    var now = aucklandNow();
+    var today = hoursTable[now.day];
+    var isOpen = now.minutes >= today.open && now.minutes < today.close;
+    el.textContent = isOpen ? 'Open now' : 'Closed now';
+    el.classList.toggle('is-closed', !isOpen);
+  }
+  updateStatus();
+  setInterval(updateStatus, 60000);
+})();
+</script>
+
 </html>
